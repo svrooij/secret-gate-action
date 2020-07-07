@@ -10,6 +10,9 @@ inputs:
 outputs:
   inputsChecked:
     description: 'True for no values missing'
+branding:
+  icon: 'check-circle'
+  color: 'orange'
 runs:
   using: 'node12'
   main: 'dist/index.js'
