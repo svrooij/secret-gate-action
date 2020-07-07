@@ -1,0 +1,39 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  failing-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Secret gate no secrets set
+        uses: ./ # for testing the action from this repository
+        with:
+          inputsToCheck: input1
+          failOnMissing: true
+  
+  continuing-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Secret gate no secrets set
+        id: gateOne
+        uses: ./ # for testing the action from this repository
+        with:
+          inputsToCheck: input1
+      - name: Secret gate with secret set
+        id: gateTwo
+        uses: ./ # for testing the action from this repository
+        with:
+          inputsToCheck: input1
+        env:
+          input1: ${{ secrets.GITHUB_TOKEN }}
+      - name: Result from gates
+        run: echo "The first gate has checked ${{ steps.gateOne.outputs.inputsChecked}} the second gate has checked ${{ steps.gateTwo.outputs.inputsChecked }}"
+      - name: Should not run
+        if: steps.gateOne.outputs.inputsChecked == 'true'
+        run: echo "This step should not be executed."

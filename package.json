@@ -1,0 +1,33 @@
+{
+  "name": "secret-gate-action",
+  "version": "1.0.0",
+  "description": "Github action to check if some secrets are set",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svrooij/secret-gate-action.git"
+  },
+  "keywords": [
+    "github",
+    "action",
+    "secret",
+    "environment"
+  ],
+  "author": "Stephan van Rooij <1292510+svrooij@users.noreply.github.com> (https://svrooij.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/svrooij/secret-gate-action/issues"
+  },
+  "homepage": "https://github.com/svrooij/secret-gate-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.4"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.22.3"
+  }
+}
