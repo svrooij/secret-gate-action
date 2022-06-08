@@ -6,7 +6,7 @@ try {
 
   let missingInputs = [];
 
-  if(failOnMissing || (inputsToCheck.length === 0 || (inputsToCheck.length === 1 && inputsToCheck[0] === '') )) {
+  if(inputsToCheck.length === 0 || (inputsToCheck.length === 1 && inputsToCheck[0] === '')) {
     throw new Error(`'inputsToCheck' is missing, please include it in your workflow section 'with' as inputsToCheck: 'input1,input2,...'`)
   }
 
