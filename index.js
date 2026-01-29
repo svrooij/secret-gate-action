@@ -1,8 +1,8 @@
-const core = require('@actions/core');
+import * as core from '@actions/core';
 
 try {
   const inputsToCheck = core.getInput('inputsToCheck').split(',');
-  const failOnMissing = core.getInput('failOnMissing') == 'true';
+  const failOnMissing = core.getBooleanInput('failOnMissing');
 
   let missingInputs = [];
 
